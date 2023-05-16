@@ -1,0 +1,21 @@
+var loopActive = false;
+if (loopActive === true) {
+  alert("refresh the page to reset the loop")
+}
+var video = document.getElementsByClassName("video-stream html5-main-video")[0];
+var time = prompt("how long do you want to loop? (in hours)\nExample: 1 = [1 hour], 60 = [60 hours]\nMade By Futzumi");
+var timer = time + "000" * "60" * "60"
+if (time === "") {
+  alert("The loop time cant be empty")
+} else if (time.includes(" ")) {
+  alert("The loop time must use minutes and nothing else")
+} else {
+  loopActive = true;
+  setTimeout(loopActive = false, timer)
+  while (loopActive === true) {
+    video.addEventListener("ended", function() {
+      video.currentTime = 0;
+      video.play()
+    }, true)
+  }
+}
